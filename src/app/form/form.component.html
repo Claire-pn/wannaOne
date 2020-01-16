@@ -1,0 +1,68 @@
+<h1>PN SQUAD FORM</h1>
+<div  layout-align="center">
+<form  class="example-form" (ngSubmit)="onSubmit()" #sampleForm="ngForm" >
+<mat-card>
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="First Name" name="name" [(ngModel)]="firstname"  #name="ngModel" required >
+    </mat-form-field>
+    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+      <div *ngIf="name.errors.required">
+          This field is required
+      </div>
+    </div>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Last Name" name="lastname" [(ngModel)]="lasttname"  #lastname="ngModel" required>
+    </mat-form-field> 
+    <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)" class="alert alert-danger">
+      <div *ngIf="lastname.errors.required">
+          This field is required
+      </div>
+    </div>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Email" type="email" name="email"[(ngModel)]="emailni" #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+    </mat-form-field> 
+     <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+
+            <div *ngIf="email.errors.required">
+                 This field is required
+            </div>
+            <div *ngIf="email.errors.pattern">
+                Must follow an email format
+            </div>
+        </div>
+    
+
+    <mat-form-field class="example-full-width">
+    <mat-label>GENDER</mat-label>
+      <mat-select [(ngModel)]="gender" name="gender" #genders="ngModel" required>
+          <mat-option value="Male">Male</mat-option>
+          <mat-option value="Female">Female</mat-option>
+      </mat-select>
+  </mat-form-field>
+  <div *ngIf="genders.invalid && (genders.dirty || genders.touched)" class="alert alert-danger">
+    <div *ngIf="genders.errors.required">
+         This field is required
+    </div>
+</div>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>FRAMEWORK FAVORITE :</mat-label>
+      <mat-select [(ngModel)]="favframe" name="favframe" #frame="ngModel" required >
+          <mat-option value="Angular">Angular</mat-option>
+          <mat-option value="React">React</mat-option>
+          <mat-option value="Vue">Vue</mat-option>
+      </mat-select>
+  </mat-form-field>
+  <div *ngIf="frame.invalid && (frame.dirty||frame.touched)" class="alert alert-danger">
+    <div *ngIf="frame.errors.required">
+          Please choose your favorite framework
+    </div>
+
+  </div>
+
+      <br><button mat-raised-button color="accent" type="submit" [disabled]="!sampleForm.form.valid">SUBMIT</button>
+</mat-card>
+</form>
+</div>
