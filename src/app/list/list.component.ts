@@ -9,11 +9,12 @@ import {Elements} from '../Data/data'
 })
 export class ListComponent implements OnInit {
   headElements = ['First Name', 'Last Name', 'Email','Gender','Favorite Framework','Update'];
-  @Input() input:Elements;
+  @Input() input:Array<Elements>;
 
   @Output() outputEvent= new EventEmitter();
   @Output() editEvent= new EventEmitter();
 
+  index:number
   constructor() {
     
    }
@@ -21,9 +22,13 @@ export class ListComponent implements OnInit {
   ngOnInit() {
   }
 
-  onEdit(index_to_edit:Number){
+  onEdit(el){
+    
     this.outputEvent.emit([true,false]);
-    this.editEvent.emit(index_to_edit)
+    
+    this.editEvent.emit(el);
+    this.index= this.input.indexOf(el);
+    this.input.splice(this.index)
   }
   
  

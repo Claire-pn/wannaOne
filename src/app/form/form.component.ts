@@ -20,10 +20,8 @@ export class FormComponent implements OnInit {
   public registration_form:boolean=true;
   public list:boolean=false;
 
-  //boolean variable for edit, default false;
-  //index number to edit
-  public index_to_edit:boolean=false;
-  public index:Number = 0
+ 
+ 
 
   constructor() { }
 
@@ -33,14 +31,7 @@ export class FormComponent implements OnInit {
   }
 
   onSubmit(){
-     if (this.index_to_edit) { 
-       var index = this.index
-       this.member[Number(index)].firstname = this.data.firstname
-       this.member[Number(index)].lastname = this.data.lastname
-       this.member[Number(index)].emailni = this.data.emailni
-       this.member[Number(index)].gender = this.data.gender
-       this.member[Number(index)].favframe = this.data.favframe
-      }else{
+ 
         this.data = new Elements;
         this.data.firstname = this.firstname
         this.data.lastname = this.lastname
@@ -52,13 +43,13 @@ export class FormComponent implements OnInit {
         this.registration_form = false;
         this.list = true;
   }
-}
 
-  update(show:boolean[],index:Number){
-    this.registration_form = show[0];
-    this.list = show[1];
-    this.index = index;
+
+  // update(show:boolean[]){
+  //   this.registration_form = show[0];
+  //   this.list = show[1];
+
     //index value will be in here
-  }
+  // }
 
 }
