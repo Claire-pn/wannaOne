@@ -1,1 +1,20 @@
-<p>list works!</p>
+<h3> PN SQUAD MEMBERS</h3>
+<table mdbTable>
+    <thead>
+      <tr>
+        <th *ngFor="let head of headElements" scope="col">{{head}} </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr mdbTableCol *ngFor="let el of input; let i = index" [attr.data-index]="i">
+        <td>{{el.firstname}}</td>
+        <td>{{el.lastname}}</td>
+        <td>{{el.emailni}}</td>
+        <td>{{el.gender}}</td>
+        <td>{{el.favframe}}</td>
+        <td><button mat-raised-button color="warn" (click)="onEdit(i)" >Edit</button></td>
+ 
+      </tr>
+    </tbody>
+  </table>
+  

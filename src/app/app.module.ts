@@ -12,6 +12,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import { ListComponent } from './list/list.component';
+import {MatTableModule} from '@angular/material/table';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 
 
@@ -31,6 +33,8 @@ import { ListComponent } from './list/list.component';
     MatButtonModule,
     MatInputModule,
     MatSelectModule,
+    MatTableModule,
+    MDBBootstrapModule.forRoot(),
     FormsModule
 
   ],
