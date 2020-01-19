@@ -1,20 +1,20 @@
 <h3> PN SQUAD MEMBERS</h3>
-<table mdbTable>
+   <table class="table-container table table-striped">
     <thead>
       <tr>
         <th *ngFor="let head of headElements" scope="col">{{head}} </th>
       </tr>
     </thead>
     <tbody>
-      <tr mdbTableCol *ngFor="let el of input; let i = index" [attr.data-index]="i">
-        <td>{{el.firstname}}</td>
-        <td>{{el.lastname}}</td>
-        <td>{{el.emailni}}</td>
-        <td>{{el.gender}}</td>
-        <td>{{el.favframe}}</td>
-        <td><button mat-raised-button color="warn" (click)="onEdit(el)" >Edit</button></td>
+        <tr *ngFor="let el of member">
+            <td>{{ el.firstname }}</td>
+            <td>{{ el.lastname }}</td>
+            <td>{{ el.emailni }}</td>
+            <td>{{ el.gender }}</td>
+            <td>{{ el.favframe }}</td>
+            <td><button mat-raised-button color="warn" (click)="onEdit(el)" >Edit</button></td>
  
-      </tr>
+           
+        </tr>
     </tbody>
-  </table>
-  
+</table>

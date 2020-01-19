@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output,EventEmitter } from '@angular/core';
-import {Elements} from '../Data/data'
+
 
 
 @Component({
@@ -9,12 +9,11 @@ import {Elements} from '../Data/data'
 })
 export class ListComponent implements OnInit {
   headElements = ['First Name', 'Last Name', 'Email','Gender','Favorite Framework','Update'];
-  @Input() input:Array<Elements>;
-
-  @Output() outputEvent= new EventEmitter();
+  @Input() data:object
+  @Input() member:any[]=[]
   @Output() editEvent= new EventEmitter();
 
-  index:number
+
   constructor() {
     
    }
@@ -23,12 +22,10 @@ export class ListComponent implements OnInit {
   }
 
   onEdit(el){
-    
-    this.outputEvent.emit([true,false]);
+   
     
     this.editEvent.emit(el);
-    this.index= this.input.indexOf(el);
-    this.input.splice(this.index)
+    console.log(el)
   }
   
  

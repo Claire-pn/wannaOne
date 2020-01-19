@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Elements} from '../Data/data'
+
+
 
 @Component({
   selector: 'app-form',
@@ -13,14 +14,15 @@ export class FormComponent implements OnInit {
   public emailni :string;
   public gender:string;
   public favframe:string;
+  public preName: string
 
-  public member:Elements[]=[]
-  public data:any
 
-  public registration_form:boolean=true;
-  public list:boolean=false;
+  public member:any[]=[]
+  public onEdit: boolean = false
 
- 
+
+
+
  
 
   constructor() { }
@@ -31,25 +33,44 @@ export class FormComponent implements OnInit {
   }
 
   onSubmit(){
- 
-        this.data = new Elements;
-        this.data.firstname = this.firstname
-        this.data.lastname = this.lastname
-        this.data.emailni = this.emailni
-        this.data.gender = this.gender
-        this.data.favframe = this.favframe
-        this.member.push(this.data)
-        alert("Welcome to the squad " + this.firstname)
-        this.registration_form = false;
-        this.list = true;
+    if (this.onEdit == false) {
+      var data = {
+    
+        firstname :this.firstname,
+        lastname : this.lastname,
+        emailni :this.emailni,
+        gender :this.gender,
+        favframe : this.favframe
+  }
+  this.member.push(data)
+  this.firstname = this.lastname = this.emailni = this.gender = this.favframe = null
+}else{
+  for(let i=0 ; i<this.member.length ; i++){
+    if(this.member[i].firstname == this.preName){
+      var data = {
+        firstname:this.firstname,
+        lastname:this.lastname,
+        emailni:this.emailni,
+        gender:this.gender,
+        favframe:this.favframe
+      }
+      this.member[this.member.indexOf(this.member[i])]=data;
+      this.onEdit=false;
+      break;
+    }
+  }
+}
   }
 
-
-  // update(show:boolean[]){
-  //   this.registration_form = show[0];
-  //   this.list = show[1];
-
-    //index value will be in here
-  // }
+onEvent(data){
+  this.preName = data.firstname
+  this.firstname= data.firstname
+  this.lastname=data.lastname
+  this.emailni= data.emailni
+  this.gender=data.gender
+  this.favframe=data.favframe
+  this.onEdit=true
+}
 
 }
+

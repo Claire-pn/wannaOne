@@ -1,8 +1,8 @@
-<div *ngIf="registration_form">
+
   <h1 class="title"> Passerelles Numeriques Squad </h1>
   <div class="container">
 
-    <form class="example-form" (ngSubmit)="onSubmit()" #sampleForm="ngForm">
+    <form class="example-form" (ngSubmit)="onSubmit();sampleForm.reset()" #sampleForm="ngForm">
       <mat-card>
         <mat-label class="reg"> REGISTER</mat-label>
         <mat-form-field class="example-full-width">
@@ -69,7 +69,11 @@
     </form>
   </div>
   <hr>
+
+<div >
+  <app-list [member]="member" (editEvent)="onEvent($event)"></app-list>
 </div>
-<div *ngIf="list">
-  <app-list [input]="member" (outputEvent)="update($event)" ></app-list>
-</div>
+
+<!-- *ngIf="list"
+*ngIf="registration_form" -->
+<!-- (outputEvent)="listData($event)"  -->
