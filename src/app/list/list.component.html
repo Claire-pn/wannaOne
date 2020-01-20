@@ -1,20 +1,19 @@
-<h3> PN SQUAD MEMBERS</h3>
-   <table class="table-container table table-striped">
-    <thead>
+<h3 class="text-dark" > PN SQUAD MEMBERS</h3>
+   <table class="table-container table table-striped"  mdbTable hover="true" > 
+    <thead class="black white-text">
       <tr>
         <th *ngFor="let head of headElements" scope="col">{{head}} </th>
       </tr>
     </thead>
-    <tbody>
-        <tr *ngFor="let el of member">
-            <td>{{ el.firstname }}</td>
-            <td>{{ el.lastname }}</td>
-            <td>{{ el.emailni }}</td>
-            <td>{{ el.gender }}</td>
-            <td>{{ el.favframe }}</td>
-            <td><button mat-raised-button color="warn" (click)="onEdit(el)" >Edit</button></td>
- 
-           
+    <tbody >
+        <tr *ngFor="let member of input , let i=index ">
+          <td class="text-dark">{{ i+1 }}</td>
+            <td class="text-dark">{{ member.firstname }}</td>
+            <td class="text-dark">{{member.lastname }}</td>
+            <td class="text-dark">{{ member.emailni }}</td >
+            <td class="text-dark">{{ member.gender }}</td>
+            <td class="text-dark">{{ member.favframe }}</td>
+            <td><button mat-raised-button color="warn" (click)="onEdit(member)"  >Edit</button></td>  
         </tr>
     </tbody>
 </table>

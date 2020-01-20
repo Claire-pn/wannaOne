@@ -1,6 +1,6 @@
-
+<div  class="aqua-gradient">
   <h1 class="title"> Passerelles Numeriques Squad </h1>
-  <div class="container">
+  <div class="container" >
 
     <form class="example-form" (ngSubmit)="onSubmit();sampleForm.reset()" #sampleForm="ngForm">
       <mat-card>
@@ -64,16 +64,12 @@
             Please choose your favorite framework
           </div>
         </div>
-        <br><button mat-raised-button color="accent" type="submit" [disabled]="!sampleForm.form.valid">SUBMIT</button>
+        <br><button mat-raised-button color="accent" type="submit" [disabled]="!sampleForm.form.valid" >Submit</button>
       </mat-card>
     </form>
   </div>
   <hr>
-
-<div >
-  <app-list [member]="member" (editEvent)="onEvent($event)"></app-list>
 </div>
-
-<!-- *ngIf="list"
-*ngIf="registration_form" -->
-<!-- (outputEvent)="listData($event)"  -->
+<div >
+  <app-list [input]="memberList" (editEvent)="onList($event)" ></app-list>
+</div>
