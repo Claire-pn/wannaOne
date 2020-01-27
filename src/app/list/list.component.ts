@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output,EventEmitter } from '@angular/core';
-import {Elements} from '../Data/data'
+import {Elements} from '../Data/data';
+import { UserDataServiceService } from '../user-data-service.service';
 
 
 
@@ -9,23 +10,30 @@ import {Elements} from '../Data/data'
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  headElements = ['Id' ,'First Name' , 'Last Name' , 'Email' , 'Gender' , 'Favorite Framework' , 'Update'];
+  headElements = ['Id' ,'Name' , 'User Name' , 'Email' , 'Update','Remove','Show'];
   @Input() input:Array<Elements>
+  @Output() deleteEvent= new EventEmitter();
   @Output() editEvent= new EventEmitter();
-  public index :number
+ 
+  public apiUrl =" https://jsonplaceholder.typicode.com/users"
 
+  dataList:Elements[]
 
-  constructor() {
-    
-   }
+  constructor(
+    private userDataService:UserDataServiceService
+    ) { }
+
 
   ngOnInit() {
+    
   }
 
-  onEdit(value){
+  atEdit(value){
     this.editEvent.emit(value)
-    this.index = this.input.indexOf(value)
-    this.input.splice(this.index)
   }
+  atDelete(id){
+    this.userDataService.deleteData(id).subscribe((dele)=>this.input.splice(id,1))
+  }  
+
   
 }

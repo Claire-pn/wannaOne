@@ -1,30 +1,74 @@
-<div  class="aqua-gradient">
+<div class="aqua-gradient" [hidden]="condition ? !newTrustFormVisible: newTrustFormVisible">
   <h1 class="title"> Passerelles Numeriques Squad </h1>
-  <div class="container" >
-
-    <form class="example-form" (ngSubmit)="onSubmit();sampleForm.reset()" #sampleForm="ngForm">
+  <div class="container">
+    <form class="example-form" (ngSubmit)="onSubmit();Form.reset()" #Form="ngForm">
       <mat-card>
+
         <mat-label class="reg"> REGISTER</mat-label>
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="First Name" name="name" [(ngModel)]="firstname" #ngalan="ngModel" required>
+          <input matInput placeholder="First Name" name="name" [(ngModel)]="fullname" #ngala="ngModel" required>
+        </mat-form-field>
+        <div *ngIf="ngala.invalid && (ngala.dirty || ngala.touched)" class="alert alert-danger">
+          <div *ngIf="ngala.errors.required">
+            This field is required
+          </div>
+        </div>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="User Name" name="lastname" [(ngModel)]="uname" #apelyid="ngModel" required>
+        </mat-form-field>
+        <div *ngIf="apelyid.invalid && (apelyid.dirty || apelyid.touched)" class="alert alert-danger">
+          <div *ngIf="apelyid.errors.required">
+            This field is required
+          </div>
+        </div>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Email" type="email" name="email" [(ngModel)]="emailni" #mai="ngModel"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+        </mat-form-field>
+        <div *ngIf="mai.invalid && (mai.dirty || mai.touched)" class="alert alert-danger">
+
+          <div *ngIf="mai.errors.required">
+            This field is required
+          </div>
+          <div *ngIf="mai.errors.pattern">
+            Must follow an email format
+          </div>
+        </div>
+        <br><button mat-raised-button color="primary" type="submit" [disabled]="!Form.form.valid">Submit</button>
+      </mat-card>
+    </form>
+  </div>
+</div>
+<div class="aqua-gradient" [hidden]="condition ? newTrustFormVisible: !newTrustFormVisible">
+  <h1 class="title"> Passerelles Numeriques Squad </h1>
+  <!-- updateform -->
+  <div class="container">
+    <form class="example-form" (ngSubmit)="onUpdate();sampleForm.reset()" #sampleForm="ngForm">
+      <mat-card>
+        <mat-label class="reg"> REGISTER</mat-label>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="ID" name="id" [(ngModel)]="editId" #ngalan="ngModel" disabled>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="First Name" name="name" [(ngModel)]="editName" #ngalan="ngModel" required>
         </mat-form-field>
         <div *ngIf="ngalan.invalid && (ngalan.dirty || ngalan.touched)" class="alert alert-danger">
           <div *ngIf="ngalan.errors.required">
             This field is required
           </div>
         </div>
-
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Last Name" name="lastname" [(ngModel)]="lastname" #apelyido="ngModel" required>
+          <input matInput placeholder="User Name" name="lastname" [(ngModel)]="editUname" #apelyido="ngModel" required>
         </mat-form-field>
         <div *ngIf="apelyido.invalid && (apelyido.dirty || apelyido.touched)" class="alert alert-danger">
           <div *ngIf="apelyido.errors.required">
             This field is required
           </div>
         </div>
-
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Email" type="email" name="email" [(ngModel)]="emailni" #mail="ngModel"
+          <input matInput placeholder="Email" type="email" name="email" [(ngModel)]="editEmailni" #mail="ngModel"
             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
         </mat-form-field>
         <div *ngIf="mail.invalid && (mail.dirty || mail.touched)" class="alert alert-danger">
@@ -36,40 +80,14 @@
             Must follow an email format
           </div>
         </div>
-
-
-        <mat-form-field class="example-full-width">
-          <mat-label>GENDER</mat-label>
-          <mat-select [(ngModel)]="gender" name="gender" #genders="ngModel" required>
-            <mat-option value="Male">Male</mat-option>
-            <mat-option value="Female">Female</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <div *ngIf="genders.invalid && (genders.dirty || genders.touched)" class="alert alert-danger">
-          <div *ngIf="genders.errors.required">
-            This field is required
-          </div>
-        </div>
-
-        <mat-form-field class="example-full-width">
-          <mat-label>FAVORITE FRAMEWORK:</mat-label>
-          <mat-select [(ngModel)]="favframe" name="favframe" #frame="ngModel" required>
-            <mat-option value="Angular">Angular</mat-option>
-            <mat-option value="React">React</mat-option>
-            <mat-option value="Vue">Vue</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <div *ngIf="frame.invalid && (frame.dirty||frame.touched)" class="alert alert-danger">
-          <div *ngIf="frame.errors.required">
-            Please choose your favorite framework
-          </div>
-        </div>
-        <br><button mat-raised-button color="accent" type="submit" [disabled]="!sampleForm.form.valid" >Submit</button>
+        <br><button mat-raised-button color="primary" type="submit" [disabled]="!sampleForm.form.valid" >Save</button>
       </mat-card>
     </form>
   </div>
-  <hr>
 </div>
-<div >
-  <app-list [input]="memberList" (editEvent)="onList($event)" ></app-list>
+<hr>
+<div>
+  <app-list [input]="memberList" (editEvent)="onEdit($event); forEdit=($event)"></app-list>
 </div>
+
+<!--  -->

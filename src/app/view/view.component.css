@@ -1,0 +1,17 @@
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    justify-content:center;
+    background-color: #2196F3;
+    padding: 10px;
+    display: inline-block;
+    text-align: left;
+    
+   
+  }
+  .container{
+    text-align: center;
+    margin-top: initial;
+    
+  }

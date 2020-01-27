@@ -1,9 +1,8 @@
 export class Elements {
     id:number
-    firstname:string
-    lastname:string
-    emailni:string
-    gender:string
-    favframe:string
+    name:string
+    username:string
+    email:string
+   
 
 }

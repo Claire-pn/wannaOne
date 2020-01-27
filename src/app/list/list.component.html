@@ -6,14 +6,17 @@
       </tr>
     </thead>
     <tbody >
-        <tr *ngFor="let member of input , let i=index ">
-          <td class="text-dark">{{ i+1 }}</td>
-            <td class="text-dark">{{ member.firstname }}</td>
-            <td class="text-dark">{{member.lastname }}</td>
-            <td class="text-dark">{{ member.emailni }}</td >
-            <td class="text-dark">{{ member.gender }}</td>
-            <td class="text-dark">{{ member.favframe }}</td>
-            <td><button mat-raised-button color="warn" (click)="onEdit(member)"  >Edit</button></td>  
+        <tr *ngFor="let member of input; let id = index">
+          <!-- <td class="text-dark">{{ i+1 }}</td> -->
+          <td class="text-dark">{{member.id}}</td>
+            <td class="text-dark">{{ member.name }}</td>
+            <td class="text-dark">{{member.username }}</td>
+            <td class="text-dark">{{ member.email }}</td >
+            <!-- <td class="text-dark">{{ member.gender }}</td>
+            <td class="text-dark">{{ member.favframe }}</td> -->
+            <td><button mat-raised-button color="accent" (click)="atEdit(member)">Edit</button> </td>
+            <td><button mat-raised-button color="warn" (click)="atDelete(id)">Delete</button></td> 
+            <td><a [routerLink]="['/view', member.id]" routerLinkActive="router-link-active"><button mat-raised-button color="primary" >View</button></a></td> 
         </tr>
     </tbody>
 </table>

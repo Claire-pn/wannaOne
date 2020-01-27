@@ -1,0 +1,16 @@
+<div class="container">
+    <form class="example-form">
+        <mat-card class="aqua-gradient">
+            <h1>MEMBER VIEW</h1>
+            <div *ngFor="let data of userInfo">
+                <h4>ID NO: {{data.id}}</h4>
+                <h4>FULL NAME :{{data.name}}</h4>
+                <h4>USERNAME :{{data.username}}</h4>
+                <h4>EMAIL :{{data.email}}</h4>
+            </div>
+
+            <button mat-raised-button color="warn" routerLink="/dashboard">Dashboard</button>
+        </mat-card>
+    </form>
+
+</div>
